@@ -1,0 +1,20 @@
+version: 2.1
+
+jobs:
+  diagnose:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: Check tools
+          command: |
+            which jq
+            which curl
+            which docker
+            which ssh
+            which git
+
+workflows:
+  main:
+    jobs:
+      - diagnose
